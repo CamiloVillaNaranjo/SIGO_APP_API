@@ -1,8 +1,8 @@
 {
   "title": "Swagger UI",
   "version": "1.0.0-*",
-  "copyright": "IO.Swagger",
-  "description": "IO.Swagger",
+  "copyright": "Sigo.IntegrationRestApi",
+  "description": "Sigo.IntegrationRestApi",
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
