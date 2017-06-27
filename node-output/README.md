@@ -1,4 +1,4 @@
-# IO.Swagger - ASP.NET Core 1.0 Server
+# Sigo_App_Api - ASP.NET Core 1.0 Server
 
 Este es un ejemplo de como luciría la Api de Integración entre Facturizate y SIGO.
 
@@ -19,7 +19,7 @@ build.bat
 ## Run in Docker
 
 ```
-cd src/IO.Swagger
-docker build -t IO.Swagger .
-docker run -p 5000:5000 IO.Swagger
+cd src/Sigo_App_Api
+docker build -t Sigo_App_Api .
+docker run -p 5000:5000 Sigo_App_Api
 ```
