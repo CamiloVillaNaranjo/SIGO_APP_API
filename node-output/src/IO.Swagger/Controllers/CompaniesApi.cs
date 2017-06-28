@@ -42,45 +42,6 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
-        /// List of addendums acquired by the Emitter.
-        /// </summary>
-        /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/addendums")]
-        [SwaggerOperation("CompaniesRfcEmitterAddendumsGet")]
-        [SwaggerResponse(200, type: typeof(Addendums))]
-        public virtual IActionResult CompaniesRfcEmitterAddendumsGet([FromRoute]string rfcEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Addendums>(exampleJson)
-            : default(Addendums);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Allows you to create an Addendum
-        /// </summary>
-        /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="body">Addendum object to be added inside the system.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="400">Invalid operation</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/addendums")]
-        [SwaggerOperation("CompaniesRfcEmitterAddendumsPost")]
-        public virtual void CompaniesRfcEmitterAddendumsPost([FromRoute]string rfcEmitter, [FromBody]Addendums body)
-        { 
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
         /// allows review the CFDI credentials for RFC.
         /// </summary>
         /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
@@ -99,51 +60,6 @@ namespace IO.Swagger.Controllers
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AuthorizedCfdi>(exampleJson)
             : default(AuthorizedCfdi);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Inform the system of a purchased add-on.
-        /// </summary>
-        /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="code">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/complements/{code}")]
-        [SwaggerOperation("CompaniesRfcEmitterComplementsCodePost")]
-        [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult CompaniesRfcEmitterComplementsCodePost([FromRoute]string rfcEmitter, [FromRoute]string code)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
-            : default(Complements);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// list of complements purchased by the Emitter.
-        /// </summary>
-        /// <remarks>Complements purchased. This option lets you know which add-ons are configured for the client and must be enabled within facturizate</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/complements")]
-        [SwaggerOperation("CompaniesRfcEmitterComplementsGet")]
-        [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult CompaniesRfcEmitterComplementsGet([FromRoute]string rfcEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
-            : default(Complements);
             return new ObjectResult(example);
         }
 
@@ -172,23 +88,24 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// shows the quantity of sheets are available for the Emitter
+        /// verifies that the status of the current relationship between receiver and emitter.
         /// </summary>
-        /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>
+        /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
         /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <param name="rfcReceiver">References to the RFC of Receiver</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/papersheets")]
-        [SwaggerOperation("CompaniesRfcEmitterPapersheetsGet")]
-        [SwaggerResponse(200, type: typeof(PaperSheets))]
-        public virtual IActionResult CompaniesRfcEmitterPapersheetsGet([FromRoute]string rfcEmitter)
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/relationships/{rfcReceiver}")]
+        [SwaggerOperation("CompaniesRfcEmitterRelationshipsRfcReceiverGet")]
+        [SwaggerResponse(200, type: typeof(RelationShips))]
+        public virtual IActionResult CompaniesRfcEmitterRelationshipsRfcReceiverGet([FromRoute]string rfcEmitter, [FromRoute]string rfcReceiver)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<PaperSheets>(exampleJson)
-            : default(PaperSheets);
+            ? JsonConvert.DeserializeObject<RelationShips>(exampleJson)
+            : default(RelationShips);
             return new ObjectResult(example);
         }
 
@@ -203,34 +120,11 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpPatch]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/papersheets")]
-        [SwaggerOperation("CompaniesRfcEmitterPapersheetsPatch")]
-        public virtual void CompaniesRfcEmitterPapersheetsPatch([FromRoute]string rfcEmitter, [FromQuery]string opType, [FromQuery]int? qtySheets)
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billings")]
+        [SwaggerOperation("PortfolioRfcEmitterBillingsPatch")]
+        public virtual void PortfolioRfcEmitterBillingsPatch([FromRoute]string rfcEmitter, [FromQuery]string opType, [FromQuery]int? qtySheets)
         { 
             throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// verifies that the status of the current relationship between receiver and emitter.
-        /// </summary>
-        /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="rfcReceiver">References to the RFC of Receiver</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/relationships/{rfcReceiver}")]
-        [SwaggerOperation("CompaniesRfcEmitterRelationshipsRfcReceiverGet")]
-        [SwaggerResponse(200, type: typeof(RelationShip))]
-        public virtual IActionResult CompaniesRfcEmitterRelationshipsRfcReceiverGet([FromRoute]string rfcEmitter, [FromRoute]string rfcReceiver)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<RelationShip>(exampleJson)
-            : default(RelationShip);
-            return new ObjectResult(example);
         }
     }
 }
