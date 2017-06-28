@@ -94,7 +94,7 @@ namespace IO.Swagger.Controllers
         /// </summary>
         /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="emitterFiscalNumber">References to RFC of Emitter.</param>
+        /// <param name="fiscalNumber">References to RFC of Emitter.</param>
         /// <param name="receiverFiscalNumber">References to the RFC of Receiver</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
@@ -102,7 +102,7 @@ namespace IO.Swagger.Controllers
         [Route("/cvillanexos/NexosSigostore/beta/companies/{country}/getRelationStatus")]
         [SwaggerOperation("GetRelationStatus")]
         [SwaggerResponse(200, type: typeof(RelationShips))]
-        public virtual IActionResult GetRelationStatus([FromRoute]string country, [FromQuery]string emitterFiscalNumber, [FromQuery]string receiverFiscalNumber)
+        public virtual IActionResult GetRelationStatus([FromRoute]string country, [FromQuery]string fiscalNumber, [FromQuery]string receiverFiscalNumber)
         { 
             string exampleJson = null;
             
