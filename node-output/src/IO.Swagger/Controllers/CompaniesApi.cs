@@ -90,7 +90,7 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// verifies that the status of the current relationship between receiver and emitter.
+        /// Verifies that the status of the current relationship between receiver and emitter.
         /// </summary>
         /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
