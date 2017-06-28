@@ -105,45 +105,6 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// List of addendums acquired by the Emitter.
-        /// </summary>
-        /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billings")]
-        [SwaggerOperation("PortfolioRfcEmitterBillingsGet")]
-        [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioRfcEmitterBillingsGet([FromRoute]string rfcEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Billings>(exampleJson)
-            : default(Billings);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Allows you to create an Addendum
-        /// </summary>
-        /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="body">Addendum object to be added inside the system.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="400">Invalid operation</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billings")]
-        [SwaggerOperation("PortfolioRfcEmitterBillingsPost")]
-        public virtual void PortfolioRfcEmitterBillingsPost([FromRoute]string rfcEmitter, [FromBody]Billings body)
-        { 
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
         /// Inform the system of a purchased add-on.
         /// </summary>
         /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
