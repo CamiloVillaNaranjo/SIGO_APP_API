@@ -45,15 +45,16 @@ namespace IO.Swagger.Controllers
         /// Validates if the RFC is a Client of Carvajal.
         /// </summary>
         /// <remarks>This function is intended to know if the RFC belongs to a Carvajal customer. Used in the migration or registration of clients Carvajal.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="fiscalNumber">References to fiscal number of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">username invalid</response>
         /// <response code="404">user not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}")]
-        [SwaggerOperation("CompaniesRfcEmitterGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{country}")]
+        [SwaggerOperation("CompaniesCountryGet")]
         [SwaggerResponse(200, type: typeof(Companies))]
-        public virtual IActionResult CompaniesRfcEmitterGet([FromRoute]string rfcEmitter)
+        public virtual IActionResult CompaniesCountryGet([FromRoute]string country, [FromQuery]string fiscalNumber)
         { 
             string exampleJson = null;
             
