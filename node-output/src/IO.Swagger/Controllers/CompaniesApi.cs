@@ -46,15 +46,15 @@ namespace IO.Swagger.Controllers
         /// </summary>
         /// <remarks>This function is intended to know if the RFC belongs to a Carvajal customer. Used in the migration or registration of clients Carvajal.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="fiscalNumber">References to fiscal number of Emitter.</param>
+        /// <param name="numberEmitter">References to fiscal number of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">username invalid</response>
         /// <response code="404">user not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{country}")]
-        [SwaggerOperation("CompaniesCountryGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{numberEmitter}")]
+        [SwaggerOperation("CompaniesNumberEmitterGet")]
         [SwaggerResponse(200, type: typeof(Companies))]
-        public virtual IActionResult CompaniesCountryGet([FromRoute]string country, [FromQuery]string fiscalNumber)
+        public virtual IActionResult CompaniesNumberEmitterGet([FromQuery]string country, [FromRoute]string numberEmitter)
         { 
             string exampleJson = null;
             
@@ -70,15 +70,15 @@ namespace IO.Swagger.Controllers
         /// </summary>
         /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="fiscalNumber">References to RFC of Emitter.</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">username invalid</response>
         /// <response code="404">user not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{country}/security/{fiscalNumber}/getCFDI")]
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{numberEmitter}/getCFDI")]
         [SwaggerOperation("GetCFDIbyRFC")]
         [SwaggerResponse(200, type: typeof(CfdiCredential))]
-        public virtual IActionResult GetCFDIbyRFC([FromRoute]string country, [FromRoute]string fiscalNumber)
+        public virtual IActionResult GetCFDIbyRFC([FromQuery]string country, [FromRoute]string numberEmitter)
         { 
             string exampleJson = null;
             
@@ -94,15 +94,15 @@ namespace IO.Swagger.Controllers
         /// </summary>
         /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="emitterNumber">References to RFC of Emitter.</param>
-        /// <param name="receiverNumber">References to the RFC of Receiver</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
+        /// <param name="numberReceiver">References to the RFC of Receiver</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{country}/getRelationStatus")]
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{numberEmitter}/getRelationStatus")]
         [SwaggerOperation("GetRelationStatus")]
         [SwaggerResponse(200, type: typeof(RelationShips))]
-        public virtual IActionResult GetRelationStatus([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string receiverNumber)
+        public virtual IActionResult GetRelationStatus([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string numberReceiver)
         { 
             string exampleJson = null;
             
