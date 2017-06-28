@@ -114,14 +114,14 @@ namespace IO.Swagger.Controllers
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billings")]
         [SwaggerOperation("PortfolioRfcEmitterBillingsGet")]
-        [SwaggerResponse(200, type: typeof(Addendums))]
+        [SwaggerResponse(200, type: typeof(Billings))]
         public virtual IActionResult PortfolioRfcEmitterBillingsGet([FromRoute]string rfcEmitter)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Addendums>(exampleJson)
-            : default(Addendums);
+            ? JsonConvert.DeserializeObject<Billings>(exampleJson)
+            : default(Billings);
             return new ObjectResult(example);
         }
 
@@ -137,7 +137,7 @@ namespace IO.Swagger.Controllers
         [HttpPost]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billings")]
         [SwaggerOperation("PortfolioRfcEmitterBillingsPost")]
-        public virtual void PortfolioRfcEmitterBillingsPost([FromRoute]string rfcEmitter, [FromBody]Addendums body)
+        public virtual void PortfolioRfcEmitterBillingsPost([FromRoute]string rfcEmitter, [FromBody]Billings body)
         { 
             throw new NotImplementedException();
         }
