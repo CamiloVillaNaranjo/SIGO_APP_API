@@ -45,14 +45,15 @@ namespace IO.Swagger.Controllers
         /// Creates a SIGO user.
         /// </summary>
         /// <remarks>Allows you to create a user of Sigo.</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
         /// <param name="body">User that needs to be added to the system.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="405">Invalid input</response>
         [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/users")]
-        [SwaggerOperation("UsersPost")]
+        [Route("/cvillanexos/NexosSigostore/beta/users/{country}")]
+        [SwaggerOperation("UsersCountryPost")]
         [SwaggerResponse(200, type: typeof(Users))]
-        public virtual IActionResult UsersPost([FromBody]Users body)
+        public virtual IActionResult UsersCountryPost([FromRoute]string country, [FromBody]Users body)
         { 
             string exampleJson = null;
             
@@ -67,16 +68,17 @@ namespace IO.Swagger.Controllers
         /// Validates that the user exist in SIGO
         /// </summary>
         /// <remarks>Validates the existence of the user in SIGO, and also verifies the permission upon Facturizate</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">Invalid user name</response>
         /// <response code="404">User not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/users")]
+        [Route("/cvillanexos/NexosSigostore/beta/users/{country}")]
         [SwaggerOperation("ValidateCredential")]
         [SwaggerResponse(200, type: typeof(Users))]
-        public virtual IActionResult ValidateCredential([FromQuery]string userName, [FromQuery]string password)
+        public virtual IActionResult ValidateCredential([FromRoute]string country, [FromQuery]string userName, [FromQuery]string password)
         { 
             string exampleJson = null;
             

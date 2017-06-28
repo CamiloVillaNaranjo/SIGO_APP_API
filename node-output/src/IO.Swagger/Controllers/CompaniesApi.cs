@@ -69,7 +69,7 @@ namespace IO.Swagger.Controllers
         /// allows review the CFDI credentials for RFC.
         /// </summary>
         /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
-        /// <param name="country"></param>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
         /// <param name="fiscalNumber">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">username invalid</response>
@@ -93,7 +93,7 @@ namespace IO.Swagger.Controllers
         /// verifies that the status of the current relationship between receiver and emitter.
         /// </summary>
         /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
-        /// <param name="country"></param>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
         /// <param name="emitterFiscalNumber">References to RFC of Emitter.</param>
         /// <param name="receiverFiscalNumber">References to the RFC of Receiver</param>
         /// <response code="200">Successful operation</response>
