@@ -125,18 +125,19 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// list of complements purchased by the Emitter.
+        /// Inform the system of a purchased add-on.
         /// </summary>
-        /// <remarks>Complements purchased. This option lets you know which add-ons are configured for the client and must be enabled within facturizate</remarks>
+        /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="fiscalNumber">References to RFC of Emitter.</param>
+        /// <param name="emitterNumber">References to RFC of Emitter.</param>
+        /// <param name="code">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements/{fiscalNumber}")]
-        [SwaggerOperation("PortfolioCountryComplementsFiscalNumberGet")]
+        [HttpPost]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements/{emitterNumber}/set/{code}")]
+        [SwaggerOperation("PortfolioCountryComplementsEmitterNumberSetCodePost")]
         [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioCountryComplementsFiscalNumberGet([FromRoute]string country, [FromRoute]string fiscalNumber)
+        public virtual IActionResult PortfolioCountryComplementsEmitterNumberSetCodePost([FromRoute]string country, [FromRoute]string emitterNumber, [FromRoute]string code)
         { 
             string exampleJson = null;
             
@@ -148,19 +149,18 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// Inform the system of a purchased add-on.
+        /// list of complements purchased by the Emitter.
         /// </summary>
-        /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
+        /// <remarks>Complements purchased. This option lets you know which add-ons are configured for the client and must be enabled within facturizate</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="fiscalNumber">References to RFC of Emitter.</param>
-        /// <param name="code">References to RFC of Emitter.</param>
+        /// <param name="emitterNumber">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements/{fiscalNumber}/set/{code}")]
-        [SwaggerOperation("PortfolioCountryComplementsFiscalNumberSetCodePost")]
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements")]
+        [SwaggerOperation("PortfolioCountryComplementsGet")]
         [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioCountryComplementsFiscalNumberSetCodePost([FromRoute]string country, [FromRoute]string fiscalNumber, [FromRoute]string code)
+        public virtual IActionResult PortfolioCountryComplementsGet([FromRoute]string country, [FromQuery]string emitterNumber)
         { 
             string exampleJson = null;
             
