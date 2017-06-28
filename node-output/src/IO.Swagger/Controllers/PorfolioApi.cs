@@ -45,14 +45,15 @@ namespace IO.Swagger.Controllers
         /// List of addendums acquired by the Emitter.
         /// </summary>
         /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="emitterFiscalNumber">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreements")]
-        [SwaggerOperation("PortfolioRfcEmitterAgreementsGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/agreements/{emitterFiscalNumber}")]
+        [SwaggerOperation("PortfolioCountryAgreementsEmitterFiscalNumberGet")]
         [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioRfcEmitterAgreementsGet([FromRoute]string rfcEmitter)
+        public virtual IActionResult PortfolioCountryAgreementsEmitterFiscalNumberGet([FromRoute]string country, [FromRoute]string emitterFiscalNumber)
         { 
             string exampleJson = null;
             
@@ -72,9 +73,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="400">Invalid operation</response>
         [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreements")]
-        [SwaggerOperation("PortfolioRfcEmitterAgreementsPost")]
-        public virtual void PortfolioRfcEmitterAgreementsPost([FromRoute]string rfcEmitter, [FromBody]Billings body)
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/agreements/{emitterFiscalNumber}")]
+        [SwaggerOperation("PortfolioCountryAgreementsEmitterFiscalNumberPost")]
+        public virtual void PortfolioCountryAgreementsEmitterFiscalNumberPost([FromRoute]string rfcEmitter, [FromBody]Billings body)
         { 
             throw new NotImplementedException();
         }
@@ -176,14 +177,14 @@ namespace IO.Swagger.Controllers
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/portfolios")]
         [SwaggerOperation("PortfolioRfcEmitterPortfoliosGet")]
-        [SwaggerResponse(200, type: typeof(Agreements))]
+        [SwaggerResponse(200, type: typeof(Portfolios))]
         public virtual IActionResult PortfolioRfcEmitterPortfoliosGet([FromRoute]string rfcEmitter, [FromQuery]string serviceType)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Agreements>(exampleJson)
-            : default(Agreements);
+            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
+            : default(Portfolios);
             return new ObjectResult(example);
         }
     }

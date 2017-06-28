@@ -47,8 +47,9 @@ namespace IO.Swagger.Models
         /// <param name="Password">Password.</param>
         /// <param name="FirstName">FirstName.</param>
         /// <param name="LastName">LastName.</param>
+        /// <param name="Status">Status.</param>
         /// <param name="CanUseFacturizate">CanUseFacturizate.</param>
-        public Users(long? UserId = null, long? CompanyId = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? CanUseFacturizate = null)
+        public Users(long? UserId = null, long? CompanyId = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? Status = null, bool? CanUseFacturizate = null)
         {
             this.UserId = UserId;
             this.CompanyId = CompanyId;
@@ -56,6 +57,7 @@ namespace IO.Swagger.Models
             this.Password = Password;
             this.FirstName = FirstName;
             this.LastName = LastName;
+            this.Status = Status;
             this.CanUseFacturizate = CanUseFacturizate;
             
         }
@@ -97,6 +99,12 @@ namespace IO.Swagger.Models
         public string LastName { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name="status")]
+        public bool? Status { get; set; }
+
+        /// <summary>
         /// Gets or Sets CanUseFacturizate
         /// </summary>
         [DataMember(Name="canUseFacturizate")]
@@ -117,6 +125,7 @@ namespace IO.Swagger.Models
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  CanUseFacturizate: ").Append(CanUseFacturizate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -187,6 +196,11 @@ namespace IO.Swagger.Models
                     this.LastName.Equals(other.LastName)
                 ) && 
                 (
+                    this.Status == other.Status ||
+                    this.Status != null &&
+                    this.Status.Equals(other.Status)
+                ) && 
+                (
                     this.CanUseFacturizate == other.CanUseFacturizate ||
                     this.CanUseFacturizate != null &&
                     this.CanUseFacturizate.Equals(other.CanUseFacturizate)
@@ -216,6 +230,8 @@ namespace IO.Swagger.Models
                     hash = hash * 59 + this.FirstName.GetHashCode();
                 if (this.LastName != null)
                     hash = hash * 59 + this.LastName.GetHashCode();
+                if (this.Status != null)
+                    hash = hash * 59 + this.Status.GetHashCode();
                 if (this.CanUseFacturizate != null)
                     hash = hash * 59 + this.CanUseFacturizate.GetHashCode();
                 return hash;

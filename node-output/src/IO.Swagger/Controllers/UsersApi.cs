@@ -70,8 +70,8 @@ namespace IO.Swagger.Controllers
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <response code="200">Successful operation</response>
-        /// <response code="400">Nombre de usuario invalido</response>
-        /// <response code="404">Usuario no encontrado</response>
+        /// <response code="400">Invalid user name</response>
+        /// <response code="404">User not found</response>
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/users")]
         [SwaggerOperation("ValidateCredential")]
