@@ -87,14 +87,14 @@ namespace IO.Swagger.Controllers
         /// </summary>
         /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="fiscalNumber">References to RFC of Emitter.</param>
+        /// <param name="emitterNumber">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/billings/{fiscalNumber}")]
-        [SwaggerOperation("PortfolioCountryBillingsFiscalNumberGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/billings")]
+        [SwaggerOperation("PortfolioCountryBillingsGet")]
         [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioCountryBillingsFiscalNumberGet([FromRoute]string country, [FromRoute]string fiscalNumber)
+        public virtual IActionResult PortfolioCountryBillingsGet([FromRoute]string country, [FromQuery]string emitterNumber)
         { 
             string exampleJson = null;
             
@@ -110,41 +110,17 @@ namespace IO.Swagger.Controllers
         /// </summary>
         /// <remarks>This method unifies the operation of inform when a folio was used, and when a quantity of folios was purchased.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="fiscalNumber">References to RFC of Emitter.</param>
+        /// <param name="emitterNumber">References to RFC of Emitter.</param>
         /// <param name="opType">Especifies if increase or decrease the quantity of folios (IN &#x3D; Increase; OUT &#x3D; decrease).</param>
         /// <param name="qtySheets">Especifies the quantity to be incremented or decresed to that special emitter in the system.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpPatch]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/billings/{fiscalNumber}")]
-        [SwaggerOperation("PortfolioCountryBillingsFiscalNumberPatch")]
-        public virtual void PortfolioCountryBillingsFiscalNumberPatch([FromRoute]string country, [FromRoute]string fiscalNumber, [FromQuery]string opType, [FromQuery]int? qtySheets)
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/billings")]
+        [SwaggerOperation("PortfolioCountryBillingsPatch")]
+        public virtual void PortfolioCountryBillingsPatch([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string opType, [FromQuery]int? qtySheets)
         { 
             throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// Inform the system of a purchased add-on.
-        /// </summary>
-        /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="emitterNumber">References to RFC of Emitter.</param>
-        /// <param name="code">References to the Code of the add-on.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements/{emitterNumber}")]
-        [SwaggerOperation("PortfolioCountryComplementsEmitterNumberPost")]
-        [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioCountryComplementsEmitterNumberPost([FromRoute]string country, [FromRoute]string emitterNumber, [FromQuery]string code)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
-            : default(Complements);
-            return new ObjectResult(example);
         }
 
 
@@ -172,19 +148,43 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
+        /// Inform the system of a purchased add-on.
+        /// </summary>
+        /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="emitterNumber">References to RFC of Emitter.</param>
+        /// <param name="code">References to the Code of the add-on.</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="404">Not found</response>
+        [HttpPost]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements")]
+        [SwaggerOperation("PortfolioCountryComplementsPost")]
+        [SwaggerResponse(200, type: typeof(Complements))]
+        public virtual IActionResult PortfolioCountryComplementsPost([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string code)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
+            : default(Complements);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
         /// return the service catalog
         /// </summary>
         /// <remarks>Consultation by RFC Issuer of contracted services</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <param name="emitterNumber">References to RFC of Emitter.</param>
         /// <param name="serviceType">Optional - references to the posible type of services contracted by Issuer</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/portfolios/{rfcEmitter}")]
-        [SwaggerOperation("PortfolioCountryPortfoliosRfcEmitterGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/portfolios")]
+        [SwaggerOperation("PortfolioCountryPortfoliosGet")]
         [SwaggerResponse(200, type: typeof(Portfolios))]
-        public virtual IActionResult PortfolioCountryPortfoliosRfcEmitterGet([FromRoute]string country, [FromRoute]string rfcEmitter, [FromQuery]string serviceType)
+        public virtual IActionResult PortfolioCountryPortfoliosGet([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string serviceType)
         { 
             string exampleJson = null;
             
