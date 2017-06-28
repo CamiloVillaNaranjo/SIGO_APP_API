@@ -66,29 +66,6 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// verifies that the status of the current relationship between receiver and emitter.
-        /// </summary>
-        /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="rfcReceiver">References to the RFC of Receiver</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/relationships/{rfcReceiver}")]
-        [SwaggerOperation("CompaniesRfcEmitterRelationshipsRfcReceiverGet")]
-        [SwaggerResponse(200, type: typeof(RelationShips))]
-        public virtual IActionResult CompaniesRfcEmitterRelationshipsRfcReceiverGet([FromRoute]string rfcEmitter, [FromRoute]string rfcReceiver)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<RelationShips>(exampleJson)
-            : default(RelationShips);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
         /// allows review the CFDI credentials for RFC.
         /// </summary>
         /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
@@ -108,6 +85,30 @@ namespace IO.Swagger.Controllers
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CfdiCredential>(exampleJson)
             : default(CfdiCredential);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
+        /// verifies that the status of the current relationship between receiver and emitter.
+        /// </summary>
+        /// <remarks>From an RFC emsior - RFC receptor relationship is queried whether the relationship is in tests or production.</remarks>
+        /// <param name="country"></param>
+        /// <param name="emitterFiscalNumber">References to RFC of Emitter.</param>
+        /// <param name="receiverFiscalNumber">References to the RFC of Receiver</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="404">Not found</response>
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{country}/getRelationStatus")]
+        [SwaggerOperation("GetRelationStatus")]
+        [SwaggerResponse(200, type: typeof(RelationShips))]
+        public virtual IActionResult GetRelationStatus([FromRoute]string country, [FromQuery]string emitterFiscalNumber, [FromQuery]string receiverFiscalNumber)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<RelationShips>(exampleJson)
+            : default(RelationShips);
             return new ObjectResult(example);
         }
     }
