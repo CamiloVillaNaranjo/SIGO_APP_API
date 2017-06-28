@@ -42,47 +42,6 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
-        /// List of addendums acquired by the Emitter.
-        /// </summary>
-        /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="emitterNumber">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/agreements")]
-        [SwaggerOperation("PortfolioCountryAgreementsGet")]
-        [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioCountryAgreementsGet([FromRoute]string country, [FromQuery]string emitterNumber)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Billings>(exampleJson)
-            : default(Billings);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Allows you to create an Addendum
-        /// </summary>
-        /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="emitterNumber">References to RFC of Emitter.</param>
-        /// <param name="body">Addendum object to be added inside the system.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="400">Invalid operation</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/agreements")]
-        [SwaggerOperation("PortfolioCountryAgreementsPost")]
-        public virtual void PortfolioCountryAgreementsPost([FromRoute]string country, [FromQuery]string emitterNumber, [FromBody]Billings body)
-        { 
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
         /// Shows the quantity of sheets are available for the Emitter
         /// </summary>
         /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>
@@ -125,18 +84,83 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
+        /// Return the service catalog
+        /// </summary>
+        /// <remarks>Consultation by RFC Issuer of contracted services</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="emitterNumber">References to RFC of Emitter.</param>
+        /// <param name="serviceType">Optional - references to the posible type of services contracted by Issuer</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="404">Not found</response>
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/portfolios")]
+        [SwaggerOperation("PortfolioCountryPortfoliosGet")]
+        [SwaggerResponse(200, type: typeof(Portfolios))]
+        public virtual IActionResult PortfolioCountryPortfoliosGet([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string serviceType)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
+            : default(Portfolios);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
+        /// List of addendums acquired by the Emitter.
+        /// </summary>
+        /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="404">Not found</response>
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/agreements")]
+        [SwaggerOperation("PortfolioNumberEmitterAgreementsGet")]
+        [SwaggerResponse(200, type: typeof(Billings))]
+        public virtual IActionResult PortfolioNumberEmitterAgreementsGet([FromQuery]string country, [FromRoute]string numberEmitter)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Billings>(exampleJson)
+            : default(Billings);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
+        /// Allows you to create an Addendum
+        /// </summary>
+        /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
+        /// <param name="body">Addendum object to be added inside the system.</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="400">Invalid operation</response>
+        [HttpPost]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/agreements")]
+        [SwaggerOperation("PortfolioNumberEmitterAgreementsPost")]
+        public virtual void PortfolioNumberEmitterAgreementsPost([FromQuery]string country, [FromRoute]string numberEmitter, [FromBody]Billings body)
+        { 
+            throw new NotImplementedException();
+        }
+
+
+        /// <summary>
         /// PENDING - for Architecture Team Validation. List of complements purchased by the Emitter.
         /// </summary>
         /// <remarks>Complements purchased. This option lets you know which add-ons are configured for the client and must be enabled within facturizate</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="emitterNumber">References to RFC of Emitter.</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements")]
-        [SwaggerOperation("PortfolioCountryComplementsGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/complements")]
+        [SwaggerOperation("PortfolioNumberEmitterComplementsGet")]
         [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioCountryComplementsGet([FromRoute]string country, [FromQuery]string emitterNumber)
+        public virtual IActionResult PortfolioNumberEmitterComplementsGet([FromQuery]string country, [FromRoute]string numberEmitter)
         { 
             string exampleJson = null;
             
@@ -157,40 +181,16 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements")]
-        [SwaggerOperation("PortfolioCountryComplementsPost")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/complements")]
+        [SwaggerOperation("PortfolioNumberEmitterComplementsPost")]
         [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioCountryComplementsPost([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string code)
+        public virtual IActionResult PortfolioNumberEmitterComplementsPost([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string code)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Complements>(exampleJson)
             : default(Complements);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Return the service catalog
-        /// </summary>
-        /// <remarks>Consultation by RFC Issuer of contracted services</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="emitterNumber">References to RFC of Emitter.</param>
-        /// <param name="serviceType">Optional - references to the posible type of services contracted by Issuer</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/portfolios")]
-        [SwaggerOperation("PortfolioCountryPortfoliosGet")]
-        [SwaggerResponse(200, type: typeof(Portfolios))]
-        public virtual IActionResult PortfolioCountryPortfoliosGet([FromRoute]string country, [FromQuery]string emitterNumber, [FromQuery]string serviceType)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
-            : default(Portfolios);
             return new ObjectResult(example);
         }
     }
