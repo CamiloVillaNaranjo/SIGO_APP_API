@@ -42,7 +42,7 @@ namespace IO.Swagger.Models
         /// Initializes a new instance of the <see cref="CfdiCredential" /> class.
         /// </summary>
         /// <param name="Id">Id.</param>
-        /// <param name="UserCfd">null.</param>
+        /// <param name="UserCfd">This is the user name used to call the web Service for letterhead the documents..</param>
         /// <param name="PasswordCfdi">This in order to be able to carry out the process of letterhead of the documents.</param>
         /// <param name="TokenCfdi">Thi is the token used to execute the web Service for letterhead the documents..</param>
         public CfdiCredential(long? Id = null, string UserCfd = null, string PasswordCfdi = null, string TokenCfdi = null)
@@ -61,9 +61,9 @@ namespace IO.Swagger.Models
         public long? Id { get; set; }
 
         /// <summary>
-        /// null
+        /// This is the user name used to call the web Service for letterhead the documents.
         /// </summary>
-        /// <value>null</value>
+        /// <value>This is the user name used to call the web Service for letterhead the documents.</value>
         [DataMember(Name="userCfd")]
         public string UserCfd { get; set; }
 
