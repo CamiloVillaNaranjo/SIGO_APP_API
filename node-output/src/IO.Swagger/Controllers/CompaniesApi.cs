@@ -232,28 +232,5 @@ namespace IO.Swagger.Controllers
             : default(RelationShip);
             return new ObjectResult(example);
         }
-
-
-        /// <summary>
-        /// return the service catalog
-        /// </summary>
-        /// <remarks>Consultation by RFC Issuer of contracted services</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="serviceType">Optional - references to the posible type of services contracted by Issuer</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/servicecatalog")]
-        [SwaggerOperation("CompaniesRfcEmitterServicecatalogGet")]
-        [SwaggerResponse(200, type: typeof(ServiceCatalog))]
-        public virtual IActionResult CompaniesRfcEmitterServicecatalogGet([FromRoute]string rfcEmitter, [FromQuery]string serviceType)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<ServiceCatalog>(exampleJson)
-            : default(ServiceCatalog);
-            return new ObjectResult(example);
-        }
     }
 }
