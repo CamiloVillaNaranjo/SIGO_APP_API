@@ -83,7 +83,7 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// shows the quantity of sheets are available for the Emitter
+        /// Shows the quantity of sheets are available for the Emitter
         /// </summary>
         /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
@@ -172,7 +172,7 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// return the service catalog
+        /// Return the service catalog
         /// </summary>
         /// <remarks>Consultation by RFC Issuer of contracted services</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
