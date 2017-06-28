@@ -42,29 +42,6 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
-        /// allows review the CFDI credentials for RFC.
-        /// </summary>
-        /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="400">username invalid</response>
-        /// <response code="404">user not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/cfdi")]
-        [SwaggerOperation("CompaniesRfcEmitterCfdiGet")]
-        [SwaggerResponse(200, type: typeof(AuthorizedCfdi))]
-        public virtual IActionResult CompaniesRfcEmitterCfdiGet([FromRoute]string rfcEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<AuthorizedCfdi>(exampleJson)
-            : default(AuthorizedCfdi);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
         /// Validates if the RFC is a Client of Carvajal.
         /// </summary>
         /// <remarks>This function is intended to know if the RFC belongs to a Carvajal customer. Used in the migration or registration of clients Carvajal.</remarks>
@@ -83,6 +60,29 @@ namespace IO.Swagger.Controllers
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Companies>(exampleJson)
             : default(Companies);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
+        /// allows review the CFDI credentials for RFC.
+        /// </summary>
+        /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
+        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="400">username invalid</response>
+        /// <response code="404">user not found</response>
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/getCfdiCredentials")]
+        [SwaggerOperation("CompaniesRfcEmitterGetCfdiCredentialsGet")]
+        [SwaggerResponse(200, type: typeof(AuthorizedCfdi))]
+        public virtual IActionResult CompaniesRfcEmitterGetCfdiCredentialsGet([FromRoute]string rfcEmitter)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<AuthorizedCfdi>(exampleJson)
+            : default(AuthorizedCfdi);
             return new ObjectResult(example);
         }
 
