@@ -130,14 +130,14 @@ namespace IO.Swagger.Controllers
         /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
         /// <param name="emitterNumber">References to RFC of Emitter.</param>
-        /// <param name="code">References to RFC of Emitter.</param>
+        /// <param name="code">References to the Code of the add-on.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements/{emitterNumber}/set/{code}")]
-        [SwaggerOperation("PortfolioCountryComplementsEmitterNumberSetCodePost")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/complements/{emitterNumber}")]
+        [SwaggerOperation("PortfolioCountryComplementsEmitterNumberPost")]
         [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioCountryComplementsEmitterNumberSetCodePost([FromRoute]string country, [FromRoute]string emitterNumber, [FromRoute]string code)
+        public virtual IActionResult PortfolioCountryComplementsEmitterNumberPost([FromRoute]string country, [FromRoute]string emitterNumber, [FromQuery]string code)
         { 
             string exampleJson = null;
             
