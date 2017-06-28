@@ -49,10 +49,10 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreement")]
-        [SwaggerOperation("PortfolioRfcEmitterAgreementGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreements")]
+        [SwaggerOperation("PortfolioRfcEmitterAgreementsGet")]
         [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioRfcEmitterAgreementGet([FromRoute]string rfcEmitter)
+        public virtual IActionResult PortfolioRfcEmitterAgreementsGet([FromRoute]string rfcEmitter)
         { 
             string exampleJson = null;
             
@@ -72,9 +72,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="400">Invalid operation</response>
         [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreement")]
-        [SwaggerOperation("PortfolioRfcEmitterAgreementPost")]
-        public virtual void PortfolioRfcEmitterAgreementPost([FromRoute]string rfcEmitter, [FromBody]Billings body)
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreements")]
+        [SwaggerOperation("PortfolioRfcEmitterAgreementsPost")]
+        public virtual void PortfolioRfcEmitterAgreementsPost([FromRoute]string rfcEmitter, [FromBody]Billings body)
         { 
             throw new NotImplementedException();
         }
