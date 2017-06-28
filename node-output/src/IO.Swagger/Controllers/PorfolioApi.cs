@@ -42,6 +42,29 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
+        /// return the service catalog
+        /// </summary>
+        /// <remarks>Consultation by RFC Issuer of contracted services</remarks>
+        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <param name="serviceType">Optional - references to the posible type of services contracted by Issuer</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="404">Not found</response>
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreements")]
+        [SwaggerOperation("PortfolioRfcEmitterAgreementsGet")]
+        [SwaggerResponse(200, type: typeof(Portfolios))]
+        public virtual IActionResult PortfolioRfcEmitterAgreementsGet([FromRoute]string rfcEmitter, [FromQuery]string serviceType)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
+            : default(Portfolios);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
         /// shows the quantity of sheets are available for the Emitter
         /// </summary>
         /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>
@@ -161,29 +184,6 @@ namespace IO.Swagger.Controllers
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Complements>(exampleJson)
             : default(Complements);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// return the service catalog
-        /// </summary>
-        /// <remarks>Consultation by RFC Issuer of contracted services</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="serviceType">Optional - references to the posible type of services contracted by Issuer</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/servicecatalog")]
-        [SwaggerOperation("PortfolioRfcEmitterServicecatalogGet")]
-        [SwaggerResponse(200, type: typeof(Portfolios))]
-        public virtual IActionResult PortfolioRfcEmitterServicecatalogGet([FromRoute]string rfcEmitter, [FromQuery]string serviceType)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
-            : default(Portfolios);
             return new ObjectResult(example);
         }
     }
