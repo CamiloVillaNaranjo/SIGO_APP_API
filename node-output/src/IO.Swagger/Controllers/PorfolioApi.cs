@@ -125,7 +125,7 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// list of complements purchased by the Emitter.
+        /// PENDING - for Architecture Team Validation. List of complements purchased by the Emitter.
         /// </summary>
         /// <remarks>Complements purchased. This option lets you know which add-ons are configured for the client and must be enabled within facturizate</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
@@ -148,7 +148,7 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// Inform the system of a purchased add-on.
+        /// PENDING - for Architecture Team Validation. Inform to the system the purchase of an add-on.
         /// </summary>
         /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>

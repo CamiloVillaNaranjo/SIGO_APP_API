@@ -66,7 +66,7 @@ namespace IO.Swagger.Controllers
 
 
         /// <summary>
-        /// allows review the CFDI credentials for RFC.
+        /// PENDING - for Architecture Team Validation. Allows review the CFDI credentials for RFC.
         /// </summary>
         /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
