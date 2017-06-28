@@ -88,10 +88,10 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billing")]
-        [SwaggerOperation("PortfolioRfcEmitterBillingGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billings")]
+        [SwaggerOperation("PortfolioRfcEmitterBillingsGet")]
         [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioRfcEmitterBillingGet([FromRoute]string rfcEmitter)
+        public virtual IActionResult PortfolioRfcEmitterBillingsGet([FromRoute]string rfcEmitter)
         { 
             string exampleJson = null;
             
@@ -112,9 +112,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpPatch]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billing")]
-        [SwaggerOperation("PortfolioRfcEmitterBillingPatch")]
-        public virtual void PortfolioRfcEmitterBillingPatch([FromRoute]string rfcEmitter, [FromQuery]string opType, [FromQuery]int? qtySheets)
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/billings")]
+        [SwaggerOperation("PortfolioRfcEmitterBillingsPatch")]
+        public virtual void PortfolioRfcEmitterBillingsPatch([FromRoute]string rfcEmitter, [FromQuery]string opType, [FromQuery]int? qtySheets)
         { 
             throw new NotImplementedException();
         }
