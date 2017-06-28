@@ -44,7 +44,7 @@ namespace IO.Swagger.Models
         /// <param name="AddendumsContracted">AddendumsContracted.</param>
         /// <param name="ComplementsContracted">ComplementsContracted.</param>
         /// <param name="PaperSheetsOwned">PaperSheetsOwned.</param>
-        public Portfolios(List<Addendums> AddendumsContracted = null, List<Complements> ComplementsContracted = null, List<PaperSheets> PaperSheetsOwned = null)
+        public Portfolios(List<Addendums> AddendumsContracted = null, List<Complements> ComplementsContracted = null, List<Billings> PaperSheetsOwned = null)
         {
             this.AddendumsContracted = AddendumsContracted;
             this.ComplementsContracted = ComplementsContracted;
@@ -68,7 +68,7 @@ namespace IO.Swagger.Models
         /// Gets or Sets PaperSheetsOwned
         /// </summary>
         [DataMember(Name="PaperSheetsOwned")]
-        public List<PaperSheets> PaperSheetsOwned { get; set; }
+        public List<Billings> PaperSheetsOwned { get; set; }
 
 
         /// <summary>
