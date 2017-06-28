@@ -75,14 +75,14 @@ namespace IO.Swagger.Controllers
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}")]
         [SwaggerOperation("CompaniesRfcEmitterGet")]
-        [SwaggerResponse(200, type: typeof(AuthorizedCfdi))]
+        [SwaggerResponse(200, type: typeof(Companies))]
         public virtual IActionResult CompaniesRfcEmitterGet([FromRoute]string rfcEmitter)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<AuthorizedCfdi>(exampleJson)
-            : default(AuthorizedCfdi);
+            ? JsonConvert.DeserializeObject<Companies>(exampleJson)
+            : default(Companies);
             return new ObjectResult(example);
         }
 
