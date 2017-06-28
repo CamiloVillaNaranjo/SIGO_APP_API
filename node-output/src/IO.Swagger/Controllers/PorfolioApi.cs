@@ -68,14 +68,15 @@ namespace IO.Swagger.Controllers
         /// Allows you to create an Addendum
         /// </summary>
         /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="emitterFiscalNumber">References to RFC of Emitter.</param>
         /// <param name="body">Addendum object to be added inside the system.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">Invalid operation</response>
         [HttpPost]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{country}/agreements/{emitterFiscalNumber}")]
         [SwaggerOperation("PortfolioCountryAgreementsEmitterFiscalNumberPost")]
-        public virtual void PortfolioCountryAgreementsEmitterFiscalNumberPost([FromRoute]string rfcEmitter, [FromBody]Billings body)
+        public virtual void PortfolioCountryAgreementsEmitterFiscalNumberPost([FromRoute]string country, [FromRoute]string emitterFiscalNumber, [FromBody]Billings body)
         { 
             throw new NotImplementedException();
         }
