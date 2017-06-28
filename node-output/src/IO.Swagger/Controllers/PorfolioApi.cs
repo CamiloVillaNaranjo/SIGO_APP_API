@@ -42,45 +42,6 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
-        /// List of addendums acquired by the Emitter.
-        /// </summary>
-        /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/addendums")]
-        [SwaggerOperation("PortfolioRfcEmitterAddendumsGet")]
-        [SwaggerResponse(200, type: typeof(Addendums))]
-        public virtual IActionResult PortfolioRfcEmitterAddendumsGet([FromRoute]string rfcEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Addendums>(exampleJson)
-            : default(Addendums);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Allows you to create an Addendum
-        /// </summary>
-        /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
-        /// <param name="body">Addendum object to be added inside the system.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="400">Invalid operation</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/addendums")]
-        [SwaggerOperation("PortfolioRfcEmitterAddendumsPost")]
-        public virtual void PortfolioRfcEmitterAddendumsPost([FromRoute]string rfcEmitter, [FromBody]Addendums body)
-        { 
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
         /// shows the quantity of sheets are available for the Emitter
         /// </summary>
         /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>
