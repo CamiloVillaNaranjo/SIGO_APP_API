@@ -41,22 +41,22 @@ namespace IO.Swagger.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="Portfolios" /> class.
         /// </summary>
-        /// <param name="BillingsContracted">BillingsContracted.</param>
+        /// <param name="AgreementsOwned">AgreementsOwned.</param>
         /// <param name="ComplementsContracted">ComplementsContracted.</param>
         /// <param name="PaperSheetsOwned">PaperSheetsOwned.</param>
-        public Portfolios(List<Billings> BillingsContracted = null, List<Complements> ComplementsContracted = null, List<Billings> PaperSheetsOwned = null)
+        public Portfolios(List<Agreements> AgreementsOwned = null, List<Complements> ComplementsContracted = null, List<Billings> PaperSheetsOwned = null)
         {
-            this.BillingsContracted = BillingsContracted;
+            this.AgreementsOwned = AgreementsOwned;
             this.ComplementsContracted = ComplementsContracted;
             this.PaperSheetsOwned = PaperSheetsOwned;
             
         }
 
         /// <summary>
-        /// Gets or Sets BillingsContracted
+        /// Gets or Sets AgreementsOwned
         /// </summary>
-        [DataMember(Name="BillingsContracted")]
-        public List<Billings> BillingsContracted { get; set; }
+        [DataMember(Name="AgreementsOwned")]
+        public List<Agreements> AgreementsOwned { get; set; }
 
         /// <summary>
         /// Gets or Sets ComplementsContracted
@@ -79,7 +79,7 @@ namespace IO.Swagger.Models
         {
             var sb = new StringBuilder();
             sb.Append("class Portfolios {\n");
-            sb.Append("  BillingsContracted: ").Append(BillingsContracted).Append("\n");
+            sb.Append("  AgreementsOwned: ").Append(AgreementsOwned).Append("\n");
             sb.Append("  ComplementsContracted: ").Append(ComplementsContracted).Append("\n");
             sb.Append("  PaperSheetsOwned: ").Append(PaperSheetsOwned).Append("\n");
             sb.Append("}\n");
@@ -121,9 +121,9 @@ namespace IO.Swagger.Models
 
             return 
                 (
-                    this.BillingsContracted == other.BillingsContracted ||
-                    this.BillingsContracted != null &&
-                    this.BillingsContracted.SequenceEqual(other.BillingsContracted)
+                    this.AgreementsOwned == other.AgreementsOwned ||
+                    this.AgreementsOwned != null &&
+                    this.AgreementsOwned.SequenceEqual(other.AgreementsOwned)
                 ) && 
                 (
                     this.ComplementsContracted == other.ComplementsContracted ||
@@ -148,8 +148,8 @@ namespace IO.Swagger.Models
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.BillingsContracted != null)
-                    hash = hash * 59 + this.BillingsContracted.GetHashCode();
+                if (this.AgreementsOwned != null)
+                    hash = hash * 59 + this.AgreementsOwned.GetHashCode();
                 if (this.ComplementsContracted != null)
                     hash = hash * 59 + this.ComplementsContracted.GetHashCode();
                 if (this.PaperSheetsOwned != null)

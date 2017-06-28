@@ -52,14 +52,14 @@ namespace IO.Swagger.Controllers
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{rfcEmitter}/agreements")]
         [SwaggerOperation("PortfolioRfcEmitterAgreementsGet")]
-        [SwaggerResponse(200, type: typeof(Portfolios))]
+        [SwaggerResponse(200, type: typeof(Agreements))]
         public virtual IActionResult PortfolioRfcEmitterAgreementsGet([FromRoute]string rfcEmitter, [FromQuery]string serviceType)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
-            : default(Portfolios);
+            ? JsonConvert.DeserializeObject<Agreements>(exampleJson)
+            : default(Agreements);
             return new ObjectResult(example);
         }
 
