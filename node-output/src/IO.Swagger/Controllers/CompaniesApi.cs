@@ -69,15 +69,16 @@ namespace IO.Swagger.Controllers
         /// allows review the CFDI credentials for RFC.
         /// </summary>
         /// <remarks>This in order to be able to carry out the process of letterhead of the documents</remarks>
-        /// <param name="rfcEmitter">References to RFC of Emitter.</param>
+        /// <param name="country"></param>
+        /// <param name="fiscalNumber">References to RFC of Emitter.</param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">username invalid</response>
         /// <response code="404">user not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{rfcEmitter}/getCfdiCredentials")]
-        [SwaggerOperation("CompaniesRfcEmitterGetCfdiCredentialsGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/companies/{country}/getCfdiCredentials")]
+        [SwaggerOperation("CompaniesCountryGetCfdiCredentialsGet")]
         [SwaggerResponse(200, type: typeof(CfdiCredential))]
-        public virtual IActionResult CompaniesRfcEmitterGetCfdiCredentialsGet([FromRoute]string rfcEmitter)
+        public virtual IActionResult CompaniesCountryGetCfdiCredentialsGet([FromRoute]string country, [FromQuery]string fiscalNumber)
         { 
             string exampleJson = null;
             
