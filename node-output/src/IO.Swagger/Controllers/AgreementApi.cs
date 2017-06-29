@@ -94,9 +94,15 @@ namespace IO.Swagger.Controllers
         [HttpPost]
         [Route("/cvillanexos/NexosSigostore/beta/Agreement/{numberEmitter}/set")]
         [SwaggerOperation("AgreementNumberEmitterSetPost")]
-        public virtual void AgreementNumberEmitterSetPost([FromRoute]string numberEmitter, [FromBody]Agreements body, [FromQuery]string country)
+        [SwaggerResponse(200, type: typeof(Agreements))]
+        public virtual IActionResult AgreementNumberEmitterSetPost([FromRoute]string numberEmitter, [FromBody]Agreements body, [FromQuery]string country)
         { 
-            throw new NotImplementedException();
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Agreements>(exampleJson)
+            : default(Agreements);
+            return new ObjectResult(example);
         }
     }
 }
