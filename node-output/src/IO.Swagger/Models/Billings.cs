@@ -41,14 +41,24 @@ namespace IO.Swagger.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="Billings" /> class.
         /// </summary>
+        /// <param name="Country">Country.</param>
         /// <param name="RfcEmitter">RfcEmitter.</param>
         /// <param name="SheetQuantity">SheetQuantity.</param>
-        public Billings(string RfcEmitter = null, int? SheetQuantity = null)
+        /// <param name="SyncAction">Describe the action to perform where, \\nsync_action &#x3D; 1  is insert or update, \\nsync_action &#x3D; 2  is delete or deactivate      \\n.</param>
+        public Billings(string Country = null, string RfcEmitter = null, int? SheetQuantity = null, int? SyncAction = null)
         {
+            this.Country = Country;
             this.RfcEmitter = RfcEmitter;
             this.SheetQuantity = SheetQuantity;
+            this.SyncAction = SyncAction;
             
         }
+
+        /// <summary>
+        /// Gets or Sets Country
+        /// </summary>
+        [DataMember(Name="country")]
+        public string Country { get; set; }
 
         /// <summary>
         /// Gets or Sets RfcEmitter
@@ -62,6 +72,13 @@ namespace IO.Swagger.Models
         [DataMember(Name="sheetQuantity")]
         public int? SheetQuantity { get; set; }
 
+        /// <summary>
+        /// Describe the action to perform where, \\nsync_action = 1  is insert or update, \\nsync_action = 2  is delete or deactivate      \\n
+        /// </summary>
+        /// <value>Describe the action to perform where, \\nsync_action = 1  is insert or update, \\nsync_action = 2  is delete or deactivate      \\n</value>
+        [DataMember(Name="syncAction")]
+        public int? SyncAction { get; set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,8 +88,10 @@ namespace IO.Swagger.Models
         {
             var sb = new StringBuilder();
             sb.Append("class Billings {\n");
+            sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  RfcEmitter: ").Append(RfcEmitter).Append("\n");
             sb.Append("  SheetQuantity: ").Append(SheetQuantity).Append("\n");
+            sb.Append("  SyncAction: ").Append(SyncAction).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,6 +131,11 @@ namespace IO.Swagger.Models
 
             return 
                 (
+                    this.Country == other.Country ||
+                    this.Country != null &&
+                    this.Country.Equals(other.Country)
+                ) && 
+                (
                     this.RfcEmitter == other.RfcEmitter ||
                     this.RfcEmitter != null &&
                     this.RfcEmitter.Equals(other.RfcEmitter)
@@ -120,6 +144,11 @@ namespace IO.Swagger.Models
                     this.SheetQuantity == other.SheetQuantity ||
                     this.SheetQuantity != null &&
                     this.SheetQuantity.Equals(other.SheetQuantity)
+                ) && 
+                (
+                    this.SyncAction == other.SyncAction ||
+                    this.SyncAction != null &&
+                    this.SyncAction.Equals(other.SyncAction)
                 );
         }
 
@@ -134,10 +163,14 @@ namespace IO.Swagger.Models
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.Country != null)
+                    hash = hash * 59 + this.Country.GetHashCode();
                 if (this.RfcEmitter != null)
                     hash = hash * 59 + this.RfcEmitter.GetHashCode();
                 if (this.SheetQuantity != null)
                     hash = hash * 59 + this.SheetQuantity.GetHashCode();
+                if (this.SyncAction != null)
+                    hash = hash * 59 + this.SyncAction.GetHashCode();
                 return hash;
             }
         }

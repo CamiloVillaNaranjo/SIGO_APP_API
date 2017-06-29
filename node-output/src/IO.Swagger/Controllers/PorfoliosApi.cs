@@ -42,49 +42,7 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
-        /// Shows the quantity of sheets are available for the Emitter
-        /// </summary>
-        /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="numberEmitter">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/billings")]
-        [SwaggerOperation("PortfolioNumberEmitterBillingsGet")]
-        [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioNumberEmitterBillingsGet([FromQuery]string country, [FromRoute]string numberEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Billings>(exampleJson)
-            : default(Billings);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// Increases or decreases the quantity of folios avalibles
-        /// </summary>
-        /// <remarks>This method unifies the operation of inform when a folio was used, and when a quantity of folios was purchased.</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="numberEmitter">References to RFC of Emitter.</param>
-        /// <param name="opType">Especifies if increase or decrease the quantity of folios (IN &#x3D; Increase; OUT &#x3D; decrease).</param>
-        /// <param name="qtySheets">Especifies the quantity to be incremented or decresed to that special emitter in the system.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpPatch]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/billings")]
-        [SwaggerOperation("PortfolioNumberEmitterBillingsPatch")]
-        public virtual void PortfolioNumberEmitterBillingsPatch([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string opType, [FromQuery]int? qtySheets)
-        { 
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// PENDING - for Architecture Team Validation. List of complements purchased by the Emitter.
+        /// List of complements purchased by the Emitter.
         /// </summary>
         /// <remarks>Complements purchased. This option lets you know which add-ons are configured for the client and must be enabled within facturizate</remarks>
         /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
@@ -92,34 +50,10 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/complements")]
-        [SwaggerOperation("PortfolioNumberEmitterComplementsGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}")]
+        [SwaggerOperation("PortfolioNumberEmitterGet")]
         [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioNumberEmitterComplementsGet([FromQuery]string country, [FromRoute]string numberEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
-            : default(Complements);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
-        /// PENDING - for Architecture Team Validation. Inform to the system the purchase of an add-on.
-        /// </summary>
-        /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="numberEmitter">References to RFC of Emitter.</param>
-        /// <param name="code">References to the Code of the add-on.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/complements")]
-        [SwaggerOperation("PortfolioNumberEmitterComplementsPost")]
-        [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioNumberEmitterComplementsPost([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string code)
+        public virtual IActionResult PortfolioNumberEmitterGet([FromQuery]string country, [FromRoute]string numberEmitter)
         { 
             string exampleJson = null;
             
@@ -150,6 +84,30 @@ namespace IO.Swagger.Controllers
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
             : default(Portfolios);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
+        /// Inform to the system the purchase of an add-on.
+        /// </summary>
+        /// <remarks>this method is used to inform the system of a purchased add-on.</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
+        /// <param name="code">References to the Code of the add-on.</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="404">Not found</response>
+        [HttpPost]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}")]
+        [SwaggerOperation("PortfolioNumberEmitterPost")]
+        [SwaggerResponse(200, type: typeof(Complements))]
+        public virtual IActionResult PortfolioNumberEmitterPost([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string code)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
+            : default(Complements);
             return new ObjectResult(example);
         }
     }
