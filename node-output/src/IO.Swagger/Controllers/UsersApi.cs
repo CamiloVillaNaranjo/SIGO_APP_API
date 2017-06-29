@@ -67,20 +67,21 @@ namespace IO.Swagger.Controllers
         /// Creates a SIGO user.
         /// </summary>
         /// <remarks>Allows you to create a user of Sigo.</remarks>
-        /// <param name="userName"></param>
+        /// <param name="country"></param>
+        /// <param name="body">The user to be created</param>
         /// <response code="200">Successful operation</response>
         /// <response code="405">Invalid input</response>
         [HttpPost]
         [Route("/cvillanexos/NexosSigostore/beta/users/{country}")]
         [SwaggerOperation("UsersCountryPost")]
-        [SwaggerResponse(200, type: typeof(Privileges))]
-        public virtual IActionResult UsersCountryPost([FromRoute]string userName)
+        [SwaggerResponse(200, type: typeof(Users))]
+        public virtual IActionResult UsersCountryPost([FromRoute]string country, [FromBody]Users body)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Privileges>(exampleJson)
-            : default(Privileges);
+            ? JsonConvert.DeserializeObject<Users>(exampleJson)
+            : default(Users);
             return new ObjectResult(example);
         }
 
