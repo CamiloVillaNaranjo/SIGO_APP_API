@@ -43,16 +43,18 @@ namespace IO.Swagger.Models
         /// </summary>
         /// <param name="UserId">UserId.</param>
         /// <param name="CompanyId">CompanyId.</param>
+        /// <param name="Country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume).</param>
         /// <param name="UserName">UserName.</param>
         /// <param name="Password">Password.</param>
         /// <param name="FirstName">FirstName.</param>
         /// <param name="LastName">LastName.</param>
         /// <param name="Status">Status.</param>
         /// <param name="Privileges">Privileges.</param>
-        public Users(long? UserId = null, long? CompanyId = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? Status = null, List<Privilege> Privileges = null)
+        public Users(long? UserId = null, long? CompanyId = null, string Country = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? Status = null, List<Privilege> Privileges = null)
         {
             this.UserId = UserId;
             this.CompanyId = CompanyId;
+            this.Country = Country;
             this.UserName = UserName;
             this.Password = Password;
             this.FirstName = FirstName;
@@ -73,6 +75,13 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="companyId")]
         public long? CompanyId { get; set; }
+
+        /// <summary>
+        /// Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)
+        /// </summary>
+        /// <value>Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</value>
+        [DataMember(Name="country")]
+        public string Country { get; set; }
 
         /// <summary>
         /// Gets or Sets UserName
@@ -121,6 +130,7 @@ namespace IO.Swagger.Models
             sb.Append("class Users {\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
+            sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
@@ -176,6 +186,11 @@ namespace IO.Swagger.Models
                     this.CompanyId.Equals(other.CompanyId)
                 ) && 
                 (
+                    this.Country == other.Country ||
+                    this.Country != null &&
+                    this.Country.Equals(other.Country)
+                ) && 
+                (
                     this.UserName == other.UserName ||
                     this.UserName != null &&
                     this.UserName.Equals(other.UserName)
@@ -222,6 +237,8 @@ namespace IO.Swagger.Models
                     hash = hash * 59 + this.UserId.GetHashCode();
                 if (this.CompanyId != null)
                     hash = hash * 59 + this.CompanyId.GetHashCode();
+                if (this.Country != null)
+                    hash = hash * 59 + this.Country.GetHashCode();
                 if (this.UserName != null)
                     hash = hash * 59 + this.UserName.GetHashCode();
                 if (this.Password != null)
