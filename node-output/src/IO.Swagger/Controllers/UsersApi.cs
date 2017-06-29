@@ -89,8 +89,7 @@ namespace IO.Swagger.Controllers
         /// Validates that the user exist in SIGO
         /// </summary>
         /// <remarks>Validates the existence of the user in SIGO, and also verifies the permission upon Facturizate</remarks>
-        /// <param name="userName"></param>
-        /// <param name="password"></param>
+        /// <param name="userName">user for whom privileges are sought</param>
         /// <response code="200">Successful operation</response>
         /// <response code="400">Invalid user name</response>
         /// <response code="404">User not found</response>
@@ -98,7 +97,7 @@ namespace IO.Swagger.Controllers
         [Route("/cvillanexos/NexosSigostore/beta/users/{userName}/privileges")]
         [SwaggerOperation("ValidateCredential")]
         [SwaggerResponse(200, type: typeof(Users))]
-        public virtual IActionResult ValidateCredential([FromQuery]string userName, [FromQuery]string password)
+        public virtual IActionResult ValidateCredential([FromRoute]string userName)
         { 
             string exampleJson = null;
             
