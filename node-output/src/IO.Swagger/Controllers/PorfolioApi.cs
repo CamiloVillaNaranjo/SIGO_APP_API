@@ -98,10 +98,10 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/portfolios")]
-        [SwaggerOperation("PortfolioNumberEmitterPortfoliosGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}")]
+        [SwaggerOperation("PortfolioNumberEmitterGet")]
         [SwaggerResponse(200, type: typeof(Portfolios))]
-        public virtual IActionResult PortfolioNumberEmitterPortfoliosGet([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string serviceType)
+        public virtual IActionResult PortfolioNumberEmitterGet([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string serviceType)
         { 
             string exampleJson = null;
             
