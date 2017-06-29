@@ -74,10 +74,10 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}")]
-        [SwaggerOperation("PortfolioNumberEmitterGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/complements")]
+        [SwaggerOperation("PortfolioNumberEmitterComplementsGet")]
         [SwaggerResponse(200, type: typeof(Portfolios))]
-        public virtual IActionResult PortfolioNumberEmitterGet([FromRoute]string numberEmitter, [FromQuery]string country)
+        public virtual IActionResult PortfolioNumberEmitterComplementsGet([FromRoute]string numberEmitter, [FromQuery]string country)
         { 
             string exampleJson = null;
             
@@ -124,14 +124,14 @@ namespace IO.Swagger.Controllers
         [HttpPost]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}")]
         [SwaggerOperation("PortfolioNumberEmitterPost")]
-        [SwaggerResponse(200, type: typeof(Complements))]
+        [SwaggerResponse(200, type: typeof(Portfolios))]
         public virtual IActionResult PortfolioNumberEmitterPost([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string code)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
-            : default(Complements);
+            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
+            : default(Portfolios);
             return new ObjectResult(example);
         }
     }
