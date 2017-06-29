@@ -42,6 +42,28 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
+        /// Validates credentials from issuer monitor.
+        /// </summary>
+        /// <remarks>This function exists to make sure that the user trying to activate the facturizate solution is who he claims to be. From the user of the sending monitor and the password are validated against SIGO if it is what is registered.</remarks>
+        /// <param name="body">Credential to be validated</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="405">Invalid input</response>
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/users")]
+        [SwaggerOperation("GetSigoCredentials")]
+        [SwaggerResponse(200, type: typeof(Users))]
+        public virtual IActionResult GetSigoCredentials([FromBody]LoginCredentials body)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Users>(exampleJson)
+            : default(Users);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
         /// Creates a SIGO user.
         /// </summary>
         /// <remarks>Allows you to create a user of Sigo.</remarks>
