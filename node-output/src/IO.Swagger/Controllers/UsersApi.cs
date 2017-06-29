@@ -89,7 +89,6 @@ namespace IO.Swagger.Controllers
         /// Validates that the user exist in SIGO
         /// </summary>
         /// <remarks>Validates the existence of the user in SIGO, and also verifies the permission upon Facturizate</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <response code="200">Successful operation</response>
@@ -99,7 +98,7 @@ namespace IO.Swagger.Controllers
         [Route("/cvillanexos/NexosSigostore/beta/users/{userName}/privileges")]
         [SwaggerOperation("ValidateCredential")]
         [SwaggerResponse(200, type: typeof(Users))]
-        public virtual IActionResult ValidateCredential([FromRoute]string country, [FromQuery]string userName, [FromQuery]string password)
+        public virtual IActionResult ValidateCredential([FromQuery]string userName, [FromQuery]string password)
         { 
             string exampleJson = null;
             
