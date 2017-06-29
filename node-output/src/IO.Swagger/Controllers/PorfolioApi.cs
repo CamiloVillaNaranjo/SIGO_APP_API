@@ -69,21 +69,21 @@ namespace IO.Swagger.Controllers
         /// List of complements purchased by the Emitter.
         /// </summary>
         /// <remarks>Complements purchased. This option lets you know which add-ons are configured for the client and must be enabled within facturizate</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
         /// <param name="numberEmitter">References to RFC of Emitter.</param>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume).</param>
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}")]
         [SwaggerOperation("PortfolioNumberEmitterGet")]
-        [SwaggerResponse(200, type: typeof(Complements))]
-        public virtual IActionResult PortfolioNumberEmitterGet([FromQuery]string country, [FromRoute]string numberEmitter)
+        [SwaggerResponse(200, type: typeof(Portfolios))]
+        public virtual IActionResult PortfolioNumberEmitterGet([FromRoute]string numberEmitter, [FromQuery]string country)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Complements>(exampleJson)
-            : default(Complements);
+            ? JsonConvert.DeserializeObject<Portfolios>(exampleJson)
+            : default(Portfolios);
             return new ObjectResult(example);
         }
 
