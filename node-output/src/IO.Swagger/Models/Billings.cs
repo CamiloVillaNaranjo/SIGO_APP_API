@@ -44,7 +44,7 @@ namespace IO.Swagger.Models
         /// <param name="Country">Country.</param>
         /// <param name="RfcEmitter">RfcEmitter.</param>
         /// <param name="SheetQuantity">SheetQuantity.</param>
-        /// <param name="SyncAction">Describe the action to perform where, \\nsync_action &#x3D; 1  is insert or update, \\nsync_action &#x3D; 2  is delete or deactivate      \\n.</param>
+        /// <param name="SyncAction">Describe the action to perform where, sync_action &#x3D; 1  is insert or update, sync_action &#x3D; 2  is delete or deactivate.</param>
         public Billings(string Country = null, string RfcEmitter = null, int? SheetQuantity = null, int? SyncAction = null)
         {
             this.Country = Country;
@@ -73,9 +73,9 @@ namespace IO.Swagger.Models
         public int? SheetQuantity { get; set; }
 
         /// <summary>
-        /// Describe the action to perform where, \\nsync_action = 1  is insert or update, \\nsync_action = 2  is delete or deactivate      \\n
+        /// Describe the action to perform where, sync_action = 1  is insert or update, sync_action = 2  is delete or deactivate
         /// </summary>
-        /// <value>Describe the action to perform where, \\nsync_action = 1  is insert or update, \\nsync_action = 2  is delete or deactivate      \\n</value>
+        /// <value>Describe the action to perform where, sync_action = 1  is insert or update, sync_action = 2  is delete or deactivate</value>
         [DataMember(Name="syncAction")]
         public int? SyncAction { get; set; }
 
