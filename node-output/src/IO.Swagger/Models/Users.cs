@@ -43,7 +43,7 @@ namespace IO.Swagger.Models
         /// </summary>
         /// <param name="UserId">UserId.</param>
         /// <param name="CompanyId">CompanyId.</param>
-        /// <param name="Country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume).</param>
+        /// <param name="Country">Country.</param>
         /// <param name="UserName">UserName.</param>
         /// <param name="Password">Password.</param>
         /// <param name="FirstName">FirstName.</param>
@@ -77,9 +77,8 @@ namespace IO.Swagger.Models
         public long? CompanyId { get; set; }
 
         /// <summary>
-        /// Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)
+        /// Gets or Sets Country
         /// </summary>
-        /// <value>Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</value>
         [DataMember(Name="country")]
         public string Country { get; set; }
 
