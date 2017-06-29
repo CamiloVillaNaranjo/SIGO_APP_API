@@ -67,21 +67,20 @@ namespace IO.Swagger.Controllers
         /// Creates a SIGO user.
         /// </summary>
         /// <remarks>Allows you to create a user of Sigo.</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="body">User that needs to be added to the system.</param>
+        /// <param name="userName"></param>
         /// <response code="200">Successful operation</response>
         /// <response code="405">Invalid input</response>
         [HttpPost]
         [Route("/cvillanexos/NexosSigostore/beta/users/{country}")]
         [SwaggerOperation("UsersCountryPost")]
-        [SwaggerResponse(200, type: typeof(Users))]
-        public virtual IActionResult UsersCountryPost([FromRoute]string country, [FromBody]Users body)
+        [SwaggerResponse(200, type: typeof(Privileges))]
+        public virtual IActionResult UsersCountryPost([FromRoute]string userName)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Users>(exampleJson)
-            : default(Users);
+            ? JsonConvert.DeserializeObject<Privileges>(exampleJson)
+            : default(Privileges);
             return new ObjectResult(example);
         }
 
@@ -97,7 +96,7 @@ namespace IO.Swagger.Controllers
         /// <response code="400">Invalid user name</response>
         /// <response code="404">User not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/users/{country}")]
+        [Route("/cvillanexos/NexosSigostore/beta/users/{userName}/privileges")]
         [SwaggerOperation("ValidateCredential")]
         [SwaggerResponse(200, type: typeof(Users))]
         public virtual IActionResult ValidateCredential([FromRoute]string country, [FromQuery]string userName, [FromQuery]string password)
