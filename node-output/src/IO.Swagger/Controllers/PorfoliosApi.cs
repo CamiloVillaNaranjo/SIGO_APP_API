@@ -42,29 +42,6 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
-        /// List of addendums acquired by the Emitter.
-        /// </summary>
-        /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
-        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
-        /// <param name="numberEmitter">References to RFC of Emitter.</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="404">Not found</response>
-        [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/agreements")]
-        [SwaggerOperation("PortfolioNumberEmitterAgreementsGet")]
-        [SwaggerResponse(200, type: typeof(Billings))]
-        public virtual IActionResult PortfolioNumberEmitterAgreementsGet([FromQuery]string country, [FromRoute]string numberEmitter)
-        { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Billings>(exampleJson)
-            : default(Billings);
-            return new ObjectResult(example);
-        }
-
-
-        /// <summary>
         /// Shows the quantity of sheets are available for the Emitter
         /// </summary>
         /// <remarks>Folios available. Lets know how many sheets are available on the platform</remarks>

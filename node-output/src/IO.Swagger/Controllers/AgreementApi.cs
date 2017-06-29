@@ -42,6 +42,29 @@ namespace IO.Swagger.Controllers
     { 
 
         /// <summary>
+        /// List of addendums acquired by the Emitter.
+        /// </summary>
+        /// <remarks>Addendums acquired. This option lets you know which add-ons are configured for the client and must be enabled within facturizate.</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="404">Not found</response>
+        [HttpGet]
+        [Route("/cvillanexos/NexosSigostore/beta/Agreement/{numberEmitter}")]
+        [SwaggerOperation("AgreementNumberEmitterGet")]
+        [SwaggerResponse(200, type: typeof(Agreements))]
+        public virtual IActionResult AgreementNumberEmitterGet([FromQuery]string country, [FromRoute]string numberEmitter)
+        { 
+            string exampleJson = null;
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<Agreements>(exampleJson)
+            : default(Agreements);
+            return new ObjectResult(example);
+        }
+
+
+        /// <summary>
         /// Allows you to create an Addendum
         /// </summary>
         /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
@@ -51,9 +74,27 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="400">Invalid operation</response>
         [HttpPost]
-        [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/agreements")]
-        [SwaggerOperation("PortfolioNumberEmitterAgreementsPost")]
-        public virtual void PortfolioNumberEmitterAgreementsPost([FromQuery]string country, [FromRoute]string numberEmitter, [FromBody]Billings body)
+        [Route("/cvillanexos/NexosSigostore/beta/Agreement/{numberEmitter}")]
+        [SwaggerOperation("AgreementNumberEmitterPost")]
+        public virtual void AgreementNumberEmitterPost([FromQuery]string country, [FromRoute]string numberEmitter, [FromBody]Agreements body)
+        { 
+            throw new NotImplementedException();
+        }
+
+
+        /// <summary>
+        /// Inform SIGO about the addendum acquired
+        /// </summary>
+        /// <remarks>That should create the business relationship and inherit the attributes of the purchased addendum. That is, if the addendum indicates that it requires implementation, the relationship in test status must be created.</remarks>
+        /// <param name="country">Refrences to the country that will use the web service (meanwhile only MX is allowed to consume)</param>
+        /// <param name="numberEmitter">References to RFC of Emitter.</param>
+        /// <param name="body">Addendum object to be added inside the system.</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="400">Invalid operation</response>
+        [HttpPost]
+        [Route("/cvillanexos/NexosSigostore/beta/Agreement/{numberEmitter}/update")]
+        [SwaggerOperation("AgreementNumberEmitterUpdatePost")]
+        public virtual void AgreementNumberEmitterUpdatePost([FromQuery]string country, [FromRoute]string numberEmitter, [FromBody]Billings body)
         { 
             throw new NotImplementedException();
         }
