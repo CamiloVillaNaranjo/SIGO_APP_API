@@ -49,7 +49,7 @@ namespace IO.Swagger.Models
         /// <param name="LastName">LastName.</param>
         /// <param name="Status">Status.</param>
         /// <param name="Privileges">Privileges.</param>
-        public Users(long? UserId = null, long? CompanyId = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? Status = null, List<Privileges> Privileges = null)
+        public Users(long? UserId = null, long? CompanyId = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? Status = null, List<Privilege> Privileges = null)
         {
             this.UserId = UserId;
             this.CompanyId = CompanyId;
@@ -108,7 +108,7 @@ namespace IO.Swagger.Models
         /// Gets or Sets Privileges
         /// </summary>
         [DataMember(Name="privileges")]
-        public List<Privileges> Privileges { get; set; }
+        public List<Privilege> Privileges { get; set; }
 
 
         /// <summary>
