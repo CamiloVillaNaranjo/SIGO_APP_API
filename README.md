@@ -1,6 +1,6 @@
-# SIGO_APP_API - ASP.NET Core 1.0 Server
+# IO.Swagger - ASP.NET Core 1.0 Server
 
-Este es de ejemplo, tiene como finalidad mostrar un mockup del API que se desarrollará para integrar con Facturizate.
+Este es un ejemplo de como luciría la Api de Integración entre Facturizate y SIGO.
 
 ## Run
 
