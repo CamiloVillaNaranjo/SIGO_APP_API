@@ -94,7 +94,7 @@ namespace IO.Swagger.Controllers
         [HttpPost]
         [Route("/cvillanexos/NexosSigostore/beta/Agreement/{numberEmitter}/update")]
         [SwaggerOperation("AgreementNumberEmitterUpdatePost")]
-        public virtual void AgreementNumberEmitterUpdatePost([FromQuery]string country, [FromRoute]string numberEmitter, [FromBody]Billings body)
+        public virtual void AgreementNumberEmitterUpdatePost([FromQuery]string country, [FromRoute]string numberEmitter, [FromBody]Agreements body)
         { 
             throw new NotImplementedException();
         }
