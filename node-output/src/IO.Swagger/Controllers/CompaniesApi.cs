@@ -51,10 +51,10 @@ namespace IO.Swagger.Controllers
         /// <response code="400">username invalid</response>
         /// <response code="404">user not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{numberEmitter}")]
-        [SwaggerOperation("CompaniesNumberEmitterGet")]
+        [Route("/cvillanexos/NexosSigostore/beta/company/{numberEmitter}")]
+        [SwaggerOperation("CompanyNumberEmitterGet")]
         [SwaggerResponse(200, type: typeof(Companies))]
-        public virtual IActionResult CompaniesNumberEmitterGet([FromQuery]string country, [FromRoute]string numberEmitter)
+        public virtual IActionResult CompanyNumberEmitterGet([FromQuery]string country, [FromRoute]string numberEmitter)
         { 
             string exampleJson = null;
             
@@ -75,7 +75,7 @@ namespace IO.Swagger.Controllers
         /// <response code="400">username invalid</response>
         /// <response code="404">user not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{numberEmitter}/getCFDI")]
+        [Route("/cvillanexos/NexosSigostore/beta/company/{numberEmitter}/getCFDI")]
         [SwaggerOperation("GetCFDIbyRFC")]
         [SwaggerResponse(200, type: typeof(CfdiCredential))]
         public virtual IActionResult GetCFDIbyRFC([FromQuery]string country, [FromRoute]string numberEmitter)
@@ -99,7 +99,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Successful operation</response>
         /// <response code="404">Not found</response>
         [HttpGet]
-        [Route("/cvillanexos/NexosSigostore/beta/companies/{numberEmitter}/getRelationStatus")]
+        [Route("/cvillanexos/NexosSigostore/beta/company/{numberEmitter}/getRelationStatus")]
         [SwaggerOperation("GetRelationStatus")]
         [SwaggerResponse(200, type: typeof(RelationShips))]
         public virtual IActionResult GetRelationStatus([FromQuery]string country, [FromRoute]string numberEmitter, [FromQuery]string numberReceiver)
