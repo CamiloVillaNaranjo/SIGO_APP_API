@@ -97,14 +97,14 @@ namespace IO.Swagger.Controllers
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/users/{userName}/privileges")]
         [SwaggerOperation("ValidateCredential")]
-        [SwaggerResponse(200, type: typeof(Privileges))]
+        [SwaggerResponse(200, type: typeof(Users))]
         public virtual IActionResult ValidateCredential([FromRoute]string userName)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Privileges>(exampleJson)
-            : default(Privileges);
+            ? JsonConvert.DeserializeObject<Users>(exampleJson)
+            : default(Users);
             return new ObjectResult(example);
         }
     }

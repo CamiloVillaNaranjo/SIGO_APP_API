@@ -48,8 +48,8 @@ namespace IO.Swagger.Models
         /// <param name="FirstName">FirstName.</param>
         /// <param name="LastName">LastName.</param>
         /// <param name="Status">Status.</param>
-        /// <param name="CanUseFacturizate">CanUseFacturizate.</param>
-        public Users(long? UserId = null, long? CompanyId = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? Status = null, bool? CanUseFacturizate = null)
+        /// <param name="Privileges">Privileges.</param>
+        public Users(long? UserId = null, long? CompanyId = null, string UserName = null, string Password = null, string FirstName = null, string LastName = null, bool? Status = null, Privileges Privileges = null)
         {
             this.UserId = UserId;
             this.CompanyId = CompanyId;
@@ -58,7 +58,7 @@ namespace IO.Swagger.Models
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Status = Status;
-            this.CanUseFacturizate = CanUseFacturizate;
+            this.Privileges = Privileges;
             
         }
 
@@ -105,10 +105,10 @@ namespace IO.Swagger.Models
         public bool? Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets CanUseFacturizate
+        /// Gets or Sets Privileges
         /// </summary>
-        [DataMember(Name="canUseFacturizate")]
-        public bool? CanUseFacturizate { get; set; }
+        [DataMember(Name="privileges")]
+        public Privileges Privileges { get; set; }
 
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace IO.Swagger.Models
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  CanUseFacturizate: ").Append(CanUseFacturizate).Append("\n");
+            sb.Append("  Privileges: ").Append(Privileges).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -201,9 +201,9 @@ namespace IO.Swagger.Models
                     this.Status.Equals(other.Status)
                 ) && 
                 (
-                    this.CanUseFacturizate == other.CanUseFacturizate ||
-                    this.CanUseFacturizate != null &&
-                    this.CanUseFacturizate.Equals(other.CanUseFacturizate)
+                    this.Privileges == other.Privileges ||
+                    this.Privileges != null &&
+                    this.Privileges.Equals(other.Privileges)
                 );
         }
 
@@ -232,8 +232,8 @@ namespace IO.Swagger.Models
                     hash = hash * 59 + this.LastName.GetHashCode();
                 if (this.Status != null)
                     hash = hash * 59 + this.Status.GetHashCode();
-                if (this.CanUseFacturizate != null)
-                    hash = hash * 59 + this.CanUseFacturizate.GetHashCode();
+                if (this.Privileges != null)
+                    hash = hash * 59 + this.Privileges.GetHashCode();
                 return hash;
             }
         }
