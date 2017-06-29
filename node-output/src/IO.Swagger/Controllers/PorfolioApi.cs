@@ -53,14 +53,14 @@ namespace IO.Swagger.Controllers
         [HttpGet]
         [Route("/cvillanexos/NexosSigostore/beta/portfolio/{numberEmitter}/relationship/{numberReceiver}")]
         [SwaggerOperation("GetRelationStatus")]
-        [SwaggerResponse(200, type: typeof(RelationShips))]
+        [SwaggerResponse(200, type: typeof(Agreements))]
         public virtual IActionResult GetRelationStatus([FromRoute]string numberEmitter, [FromRoute]string numberReceiver, [FromQuery]string country)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<RelationShips>(exampleJson)
-            : default(RelationShips);
+            ? JsonConvert.DeserializeObject<Agreements>(exampleJson)
+            : default(Agreements);
             return new ObjectResult(example);
         }
 
